@@ -51,21 +51,20 @@
         }
         nav a:hover { color: var(--primary-color); }
 
-        /* --- 核心布局：左图右文 --- */
+        /* --- 核心布局 --- */
         .profile-section {
             display: flex;
-            gap: 50px; /* 头像与右侧内容的间距 */
+            gap: 50px;
             margin-bottom: 60px;
             align-items: flex-start;
         }
 
-        /* 头像样式 */
         .profile-photo {
             flex-shrink: 0;
             width: 200px;
             height: 260px;
             background-color: #eee;
-            border-radius: 8px; /* 圆角矩形头像 */
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
@@ -75,12 +74,10 @@
             object-fit: cover;
         }
 
-        /* 右侧内容区域（包含个人信息 + Bio） */
         .profile-content {
             flex-grow: 1;
         }
 
-        /* 姓名 */
         .profile-header h1 {
             margin-top: 0;
             margin-bottom: 15px;
@@ -88,48 +85,108 @@
             line-height: 1.2;
         }
 
-        /* 压缩后的个人信息列表 */
         .info-list {
             margin-bottom: 25px;
             font-size: 1rem;
             color: #444;
         }
         .info-list p {
-            margin: 4px 0; /* 减小行间距 */
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            color: #888;
+            margin: 4px 0;
         }
 
-        /* Biography 样式 */
-        .bio-section h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-            color: #000;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
         .bio-text {
             color: var(--secondary-text-color);
             text-align: justify;
         }
 
-        /* --- 论文列表与其他 --- */
+        /* --- 标题栏样式 --- */
         section { margin-bottom: 50px; }
-        h2 {
-            font-size: 1.6rem;
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 2px solid #f4f4f4;
             padding-bottom: 12px;
             margin-bottom: 25px;
-            color: #222;
         }
-        .publication-item { margin-bottom: 18px; }
-        .publication-title { font-weight: 700; color: #000; font-size: 1.05rem;}
-        .publication-authors { color: #555; font-size: 0.95rem; margin: 2px 0; }
-        .publication-venue { font-style: italic; color: var(--primary-color); font-size: 0.9rem; }
+        
+        .section-header h2 {
+            font-size: 1.6rem;
+            color: #222;
+            margin: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .equal-contrib {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        /* Full Publications 按钮样式 */
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 16px;
+            border: 1px solid #d4b896;
+            border-radius: 4px;
+            color: #b8956a;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .view-all-btn:hover {
+            background-color: #b8956a;
+            color: white;
+            text-decoration: none;
+            border-color: #b8956a;
+        }
+        
+        .view-all-btn::after {
+            content: "→";
+            transition: transform 0.3s ease;
+        }
+        
+        .view-all-btn:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* 论文列表样式 */
+        .publication-item { margin-bottom: 22px; }
+        .publication-title { 
+            font-weight: 700; 
+            color: #000; 
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        .publication-authors { 
+            color: #555; 
+            font-size: 0.95rem; 
+            margin: 2px 0; 
+        }
+        .publication-venue { 
+            font-style: italic; 
+            color: var(--primary-color); 
+            font-size: 0.9rem; 
+        }
+        .publication-links {
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+        .publication-links a {
+            margin-right: 12px;
+            color: #666;
+        }
+        .publication-links a:hover {
+            color: var(--primary-color);
+        }
 
         /* 移动端适配 */
         @media (max-width: 768px) {
@@ -142,6 +199,12 @@
             .bio-text { text-align: left; }
             nav { text-align: center; }
             nav a { margin: 0 10px; }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -159,7 +222,7 @@
         <div class="profile-photo">
             <img src="./files/photo.jpg" alt="ShipengZhu">
             <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#999; background:#eee;">Photo</div> 
-            </div>
+        </div>
 
         <div class="profile-content">
             <div class="profile-header">
@@ -167,7 +230,7 @@
             </div>
 
             <div class="info-list">
-                <p>I am an Assistant Researcher (至善博后),  at <a href="https://palm.seu.edu.cn/">PALM</a> Lab, <a href="https://cse.seu.edu.cn/">School of Computer Science and Engineering</a>, <a href="https://www.seu.edu.cn/">Southeast University</a>. I received the Ph.D. degree from Southeast University, China, in 2025, advised by Prof. <a href="https://palm.seu.edu.cn/hxue/">Hui Xue</a>.</p>
+                <p>I am an Assistant Researcher (至善博后),  at <a href="https://palm.seu.edu.cn/ ">PALM</a> Lab, <a href="https://cse.seu.edu.cn/ ">School of Computer Science and Engineering</a>, <a href="https://www.seu.edu.cn/ ">Southeast University</a>. I received the Ph.D. degree from Southeast University, China, in 2025, advised by Prof. <a href="https://palm.seu.edu.cn/hxue/ ">Hui Xue</a>.</p>
                 <p>
                     My research interests mainly include computer vision and multi-modal learning. 
                     I'm currently working on text image processing & analysis. 
@@ -175,15 +238,14 @@
                 <p>
                     [ <a href="shipengzhu@seu.edu.cn">Email</a> ] 
                     &bull;
-                    [ <a href="https://scholar.google.com/citations?user=D0T1TFAAAAAJ&hl=en">Google Scholar</a> ] &bull; [ <a href="https://dblp.org/pid/252/0041.html">DBLP</a> ]
+                    [ <a href="https://scholar.google.com/citations?user=D0T1TFAAAAAJ&hl=en ">Google Scholar</a> ] &bull; [ <a href="https://dblp.org/pid/252/0041.html ">DBLP</a> ]
                 </p>
             </div>
-
         </div>
     </section>
 
     <section id="news">
-        <h2>News</h2>
+        <h2 style="border-bottom: 2px solid #f4f4f4; padding-bottom: 12px; margin-bottom: 25px;">News</h2>
         <div style="line-height: 2;">
             <div style="margin-bottom: 8px;">
                 <span style="background: #e8f4f8; color: #0066cc; padding: 2px 8px; border-radius: 3px; font-size: 0.85em; font-weight: 600; margin-right: 10px;">2026.02</span>
@@ -197,85 +259,61 @@
     </section>
 
     <section id="publications">
-        <h2>Selected Publications <span style="font-size: 0.6em; font-weight: normal; color: #666; margin-left: 10px;">(† denotes equal contribution)</span></h2>
+        <!-- 仅显示一作/共一论文 -->
+        <div class="section-header">
+            <h2>Selected Publications <span class="equal-contrib">(† denotes equal contribution)</span></h2>
+            <a href="publications.html" class="view-all-btn">Full Publications</a>
+        </div>
         
+        <!-- 一作论文 -->
         <div class="publication-item">
-            <div class="publication-title">EpiAgent: An Agent-Centric System for Ancient Inscription Restoration </div>
+            <div class="publication-title">EpiAgent: An Agent-Centric System for Ancient Inscription Restoration</div>
             <div class="publication-authors"><u><b>Shipeng Zhu</b></u>, Ang Chen, Na Nie, Pengfei Fang, Min-Ling Zhang, Hui Xue.</div>
-            <div class="publication-venue"> The 43rd IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026)</div>
+            <div class="publication-venue">The 43rd IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026)</div>
         </div>
 
         <div class="publication-item">
-            <div class="publication-title">MCHDoc: A Comprehensive Benchmark for Reading Multi-Carrier Chinese Historical Documents </div>
+            <div class="publication-title">MCHDoc: A Comprehensive Benchmark for Reading Multi-Carrier Chinese Historical Documents</div>
             <div class="publication-authors">Yijun Sheng†, <u><b>Shipeng Zhu</b></u>†, Ruijia Zuo, Na Nie, Hui Xue.</div>
-            <div class="publication-venue"> The 43rd IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026)</div>
+            <div class="publication-venue">The 43rd IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026)</div>
         </div>
 
         <div class="publication-item">
-            <div class="publication-title">Text-Phase Synergy Network with Dual Priors for Unsupervised Cross-Domain Image Retrieval </div>
-            <div class="publication-authors">Jing Yang, Hui Xue, <u><b>Shipeng Zhu</b></u>, Pengfei Fang.</div>
-            <div class="publication-venue"> The 43rd IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026)</div>
-        </div>
-
-        <div class="publication-item">
-            <div class="publication-title">Adaptive Hyperbolic Kernels: Modulated Embedding in de Branges-Rovnyak Spaces </div>
-            <div class="publication-authors">Leping Si, Meimei Yang, Hui Xue, <u><b>Shipeng Zhu</b></u>, Pengfei Fang.</div>
-            <div class="publication-venue">The 40th AAAI Conference on Artificial Intelligence (AAAI 2026, <strong>Oral</strong>) </div>
-        </div>
-
-        <div class="publication-item">
-            <div class="publication-title">Improving Scene Text Retrieval via Stylized Middle Modality [ <a href="./papers/Improving Scene Text Retrieval via Stylized Middle Modality.pdf">PDF</a> ] </div>
+            <div class="publication-title">Improving Scene Text Retrieval via Stylized Middle Modality [<a href="./papers/Improving Scene Text Retrieval via Stylized Middle Modality.pdf">PDF</a>]</div>
             <div class="publication-authors"><u><b>Shipeng Zhu</b></u>, Jun Fang, Pengfei Fang, Hui Xue.</div>
             <div class="publication-venue">ACM Transactions on Multimedia Computing, Communications, and Application (ACM ToMM 2024)</div>
         </div>
         
         <div class="publication-item">
-            <div class="publication-title">Reproducing the Past: A Dataset for Benchmarking Inscription Restoration [ <a href="./papers/Reproducing the Past A Dataset for Benchmarking Inscription Restoration.pdf">PDF</a> ] </div>
+            <div class="publication-title">Reproducing the Past: A Dataset for Benchmarking Inscription Restoration [<a href="./papers/Reproducing the Past A Dataset for Benchmarking Inscription Restoration.pdf">PDF</a>] </div>
             <div class="publication-authors"><u><b>Shipeng Zhu</b></u>, Hui Xue, Na Nie, Chenjie Zhu, Haiyue Liu, Pengfei Fang.</div>
-            <div class="publication-venue"> The 32nd ACM International Conference on Multimedia (ACM MM 2024, <strong>Best Paper Nomination</strong>)</div>
+            <div class="publication-venue">The 32nd ACM International Conference on Multimedia (ACM MM 2024, <strong>Best Paper Nomination</strong>)</div>
         </div>
 
         <div class="publication-item">
-            <div class="publication-title">PEAN: A Diffusion-Based Prior-Enhanced Attention Network for Scene Text Image Super-Resolution [ <a href="./papers/PEAN A Diffusion-Based Prior-Enhanced Attention Network for Scene Text Image Super-Resolution.pdf">PDF</a> ]</div>
-            <div class="publication-authors">Zuoyan Zhao, Hui Xue, Pengfei Fang, <u><b>Shipeng Zhu</b></u>.</div>
-            <div class="publication-venue">The 32nd ACM International Conference on Multimedia (ACM MM 2024) </div>
-        </div>
-
-        <div class="publication-item">
-            <div class="publication-title">Text Image Inpainting via Global Structure-Guided Diffusion Models [ <a href="./papers/Text Image Inpainting via Global Structure-Guided Diffusion Models.pdf">PDF</a> ] </div>
+            <div class="publication-title">Text Image Inpainting via Global Structure-Guided Diffusion Models [<a href="./papers/Text Image Inpainting via Global Structure-Guided Diffusion Models.pdf">PDF</a>] </div>
             <div class="publication-authors"><u><b>Shipeng Zhu</b></u>, Pengfei Fang, Chenjie Zhu, Zuoyan Zhao, Qiang Xu, Hui Xue.</div>
-            <div class="publication-venue"> The 38th AAAI Conference on Artificial Intelligence (AAAI 2024)</div>
+            <div class="publication-venue">The 38th AAAI Conference on Artificial Intelligence (AAAI 2024)</div>
         </div>
         
         <div class="publication-item">
-            <div class="publication-title">Improving Scene Text Image Super-resolution via Dual Prior Modulation Network [ <a href="./papers/Improving Scene Text Image Super-Resolution via Dual Prior Modulation Network.pdf">PDF</a> ] </div>
+            <div class="publication-title">Improving Scene Text Image Super-resolution via Dual Prior Modulation Network [<a href="./papers/Improving Scene Text Image Super-Resolution via Dual Prior Modulation Network.pdf">PDF</a>] </div>
             <div class="publication-authors"><u><b>Shipeng Zhu</b></u>, Zuoyan Zhao, Pengfei Fang, Hui Xue.</div>
             <div class="publication-venue">The 37th AAAI Conference on Artificial Intelligence (AAAI 2023)</div>
-        </div>
-
-
-        <div class="publication-item">
-            <div class="publication-title">CosNet: A Generalized Spectral Kernel Network [ <a href="./papers/CosNet A Generalized Spectral Kernel Network.pdf">PDF</a> ]</div>
-            <div class="publication-authors">Yangfang Xue, Pengfei Fang, Jinyue Tian, <u><b>Shipeng Zhu</b></u>, Hui Xue.</div>
-            <div class="publication-venue">The 37th Annual Conference on Neural Information Processing Systems (NeurIPS 2023) </div>
-        </div>
-
-
-
-        
+            <div class="publication-links">
     </section>
 
     <section id="honors">
-        <h2>Honors</h2>
+        <h2 style="border-bottom: 2px solid #f4f4f4; padding-bottom: 12px; margin-bottom: 25px;">Honors</h2>
         <ul>
             <li>Doctoral Innovation Capability Enhancement Program (A-Level), Southeast University, 2025.</li>
             <li>Puxin Elite scholarship, 2023.</li>
-            <li>2nd Place, <a href="https://ai.100tal.com/icdar">Competition on Recognition of Multi-line Handwritten Mathematical Expressions</a> (in conjunction with <a href="https://iapr.org/archives/icdar2023/">ICDAR 2023</a>). </li>
+            <li>2nd Place, <a href="https://ai.100tal.com/icdar ">Competition on Recognition of Multi-line Handwritten Mathematical Expressions</a> (in conjunction with <a href="https://iapr.org/archives/icdar2023/ ">ICDAR 2023</a>). </li>
         </ul>
     </section>
 
     <section id="service">
-        <h2>Academic Service</h2>
+        <h2 style="border-bottom: 2px solid #f4f4f4; padding-bottom: 12px; margin-bottom: 25px;">Academic Service</h2>
         <ul>
             <li><strong>Communication Committee Member:</strong> CAAI-ML.</li>
             <li><strong>Conference Reviewer:</strong> NeurIPS, ICLR, ICML, CVPR, ICCV, AAAI, ACM MM.</li>
